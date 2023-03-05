@@ -96,6 +96,7 @@
 		37DD503623AD513200A4CEFF /* VRMSpringBoneColliderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD503223AD4D3C00A4CEFF /* VRMSpringBoneColliderGroup.swift */; };
 		37DD503723AD515E00A4CEFF /* SCNVector3+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD503423AD4FE700A4CEFF /* SCNVector3+.swift */; };
 		37DD503923AD535E00A4CEFF /* VRMSpringBone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD503823AD535E00A4CEFF /* VRMSpringBone.swift */; };
+		C6E4E03529B49B0500514107 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C6E4E03429B49B0500514107 /* Shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +237,7 @@
 		37DD503223AD4D3C00A4CEFF /* VRMSpringBoneColliderGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRMSpringBoneColliderGroup.swift; sourceTree = "<group>"; };
 		37DD503423AD4FE700A4CEFF /* SCNVector3+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+.swift"; sourceTree = "<group>"; };
 		37DD503823AD535E00A4CEFF /* VRMSpringBone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRMSpringBone.swift; sourceTree = "<group>"; };
+		C6E4E03429B49B0500514107 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,6 +395,7 @@
 		245725D82146F47A003AA5D7 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				C6E4E03429B49B0500514107 /* Shaders.metal */,
 				245725D92146F47A003AA5D7 /* AppDelegate.swift */,
 				245725DB2146F47A003AA5D7 /* ViewController.swift */,
 				245725DD2146F47B003AA5D7 /* Main.storyboard */,
@@ -781,6 +784,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6E4E03529B49B0500514107 /* Shaders.metal in Sources */,
 				245725DC2146F47A003AA5D7 /* ViewController.swift in Sources */,
 				245725DA2146F47A003AA5D7 /* AppDelegate.swift in Sources */,
 			);

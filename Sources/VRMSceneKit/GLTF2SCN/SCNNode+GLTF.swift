@@ -46,7 +46,19 @@ extension SCNNode {
             addChildNode(try loader.node(withNodeIndex: child))
         }
     }
-
+    
+    // duplicateNode 复制node，用来生成描边
+    func duplicateNode(_ node: SCNNode) -> SCNNode {
+        let nodeCopy = node.copy() as? SCNNode ?? SCNNode()
+        if let geometry = node.geometry?.copy() as? SCNGeometry {
+            nodeCopy.geometry = geometry
+            if let material = geometry.firstMaterial?.copy() as? SCNMaterial {
+                nodeCopy.geometry?.firstMaterial = material
+            }
+        }
+        return nodeCopy
+    }
+    
     convenience init(mesh: GLTF.Mesh, loader: VRMSceneLoader) throws {
         self.init()
         name = mesh.name
@@ -97,6 +109,21 @@ extension SCNNode {
             }
 
             addChildNode(node)
+
+            // 对于面部的情况当成单面处理
+            if name == "Face.baked_custom" || name == "Face (merged).baked" {
+//                node.geometry?.firstMaterial?.isDoubleSided = false
+            }
+//            if node.geometry?.firstMaterial?.isDoubleSided == false { // 只有单面才搞
+                // 制作描边
+                let outlineNode = duplicateNode(node)
+                addChildNode(outlineNode)
+                let outlineProgram = SCNProgram()
+                outlineProgram.vertexFunctionName = "outline_vertex"
+                outlineProgram.fragmentFunctionName = "outline_fragment"
+                outlineNode.geometry?.firstMaterial?.program = outlineProgram
+                outlineNode.geometry?.firstMaterial?.cullMode = .front
+//            }
         }
     }
 }
