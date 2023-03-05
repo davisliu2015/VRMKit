@@ -112,9 +112,9 @@ extension SCNNode {
 
             // 对于面部的情况当成单面处理
             if name == "Face.baked_custom" || name == "Face (merged).baked" {
-//                node.geometry?.firstMaterial?.isDoubleSided = false
+                node.geometry?.firstMaterial?.isDoubleSided = false
             }
-//            if node.geometry?.firstMaterial?.isDoubleSided == false { // 只有单面才搞
+            if node.geometry?.firstMaterial?.isDoubleSided == false { // 只有单面才搞
                 // 制作描边
                 let outlineNode = duplicateNode(node)
                 addChildNode(outlineNode)
@@ -123,7 +123,7 @@ extension SCNNode {
                 outlineProgram.fragmentFunctionName = "outline_fragment"
                 outlineNode.geometry?.firstMaterial?.program = outlineProgram
                 outlineNode.geometry?.firstMaterial?.cullMode = .front
-//            }
+            }
         }
     }
 }
