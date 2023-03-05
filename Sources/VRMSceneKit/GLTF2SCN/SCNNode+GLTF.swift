@@ -111,9 +111,12 @@ extension SCNNode {
             addChildNode(node)
 
             // 对于面部的情况当成单面处理
-            if name == "Face.baked_custom" || name == "Face (merged).baked" {
+            if name == "Face.baked_custom" ||
+                name == "Face (merged).baked" ||
+                name == "Face (merged)(Clone).baked" {
                 node.geometry?.firstMaterial?.isDoubleSided = false
             }
+            print("name=", name)
             if node.geometry?.firstMaterial?.isDoubleSided == false { // 只有单面才搞
                 // 制作描边
                 let outlineNode = duplicateNode(node)
