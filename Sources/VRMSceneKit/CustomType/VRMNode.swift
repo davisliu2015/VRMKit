@@ -103,7 +103,9 @@ open class VRMNode: SCNNode {
 
 extension VRMNode: RenderUpdatable {
     public func update(at time: TimeInterval) {
-        let seconds = timer.deltaTime(updateAtTime: time)
+        // add by davis 大胆猜测一下 原来的springbone是按照60帧的情况来调的
+        // 现在帧率变为15，所以时间要缩短为原来的1/4 才会有相同的效果
+        let seconds = timer.deltaTime(updateAtTime: time)/4
         springBones.forEach({ $0.update(deltaTime: seconds) })
     }
 }
