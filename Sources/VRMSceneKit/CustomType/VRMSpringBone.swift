@@ -175,14 +175,16 @@ extension VRMSpringBone {
         }
         
         func update(center: SCNNode?, stiffnessForce: Float, dragForce: Float, external: SIMD3<Float>, colliders: [SphereCollider]) {
+            let dForce = Float(dragForce)/5
+            let sForce = Float(stiffnessForce)/5
             let currentTail: SIMD3<Float> = center?.utx.transformPoint(self.currentTail) ?? self.currentTail
             let prevTail: SIMD3<Float> = center?.utx.transformPoint(self.prevTail) ?? self.prevTail
 
             // verlet積分で次の位置を計算
             var nextTail: SIMD3<Float> = {
                 let a = currentTail
-                let b = (currentTail - prevTail) * (1.0 - dragForce) // 前フレームの移動を継続する(減衰もあるよ)
-                let c = self.parentRotation * self.localRotation * self.boneAxis * stiffnessForce // 親の回転による子ボーンの移動目標
+                let b = (currentTail - prevTail) * (1.0 - dForce) // 前フレームの移動を継続する(減衰もあるよ)
+                let c = self.parentRotation * self.localRotation * self.boneAxis * sForce // 親の回転による子ボーンの移動目標
                 let d = external // 外力による移動量
                 return a + b + c + d
             }()
