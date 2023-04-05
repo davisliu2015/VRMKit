@@ -175,8 +175,8 @@ extension VRMSpringBone {
         }
         
         func update(center: SCNNode?, stiffnessForce: Float, dragForce: Float, external: SIMD3<Float>, colliders: [SphereCollider]) {
-            let dForce = Float(dragForce)/5
-            let sForce = Float(stiffnessForce)/5
+            let dForce = Float(dragForce)/4
+            let sForce = Float(stiffnessForce)/4
             let currentTail: SIMD3<Float> = center?.utx.transformPoint(self.currentTail) ?? self.currentTail
             let prevTail: SIMD3<Float> = center?.utx.transformPoint(self.prevTail) ?? self.prevTail
 
